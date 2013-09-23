@@ -50,7 +50,6 @@ A simple [Stripe.js](https://stripe.com/docs/stripe.js) wrapper for GWT.
     assert stripe1 == stripe2;
     ```
 
-
 ##Running the sample
 1. Clone the repo
 2. `cd` to root folder
