@@ -57,3 +57,6 @@ A simple [Stripe.js](https://stripe.com/docs/stripe.js) wrapper for GWT.
 4. `cd sample`
 5. `mvn clean gwt:run`
 
+##Thanks to
+[![Arcbees.com](http://arcbees-ads.appspot.com/ad.png)](http://arcbees.com)
+
