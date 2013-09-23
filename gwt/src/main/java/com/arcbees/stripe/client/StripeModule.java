@@ -9,7 +9,7 @@ public class StripeModule extends AbstractGinModule {
     @Provides
     @Singleton
     public Stripe getStripe() {
-        return StripeFactory.get();
+        return new StripeImpl();
     }
 
     @Override
