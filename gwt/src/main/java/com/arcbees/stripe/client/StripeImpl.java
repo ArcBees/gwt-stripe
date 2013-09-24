@@ -5,21 +5,18 @@ import com.google.gwt.core.client.ScriptInjector;
 
 public class StripeImpl implements Stripe {
     private static final String STRIPE_JAVASCRIPT_URL = "https://js.stripe.com/v2/";
-    private boolean injected;
 
     @Override
     public void inject(final Callback<Void, Exception> callback) {
-        if (!injected) {
+        if (!isInjected()) {
             ScriptInjector.fromUrl(STRIPE_JAVASCRIPT_URL).setWindow(ScriptInjector.TOP_WINDOW).setCallback(new Callback<Void, Exception>() {
                 @Override
                 public void onFailure(Exception reason) {
-                    injected = false;
                     callback.onFailure(reason);
                 }
 
                 @Override
                 public void onSuccess(Void result) {
-                    injected = true;
                     callback.onSuccess(result);
                 }
             })
@@ -64,9 +61,9 @@ public class StripeImpl implements Stripe {
     }-*/;
 
     @Override
-    public boolean isInjected() {
-        return injected;
-    }
+    public native boolean isInjected() /*-{
+        return typeof $wnd.Stripe !== "undefined";
+    }-*/;
 
     @Override
     public native void setPublishableKey(String publishableKey) /*-{

@@ -12,6 +12,8 @@ public class Sample implements EntryPoint {
     public void onModuleLoad() {
         DOM.getElementById("loading").getStyle().setDisplay(Style.Display.NONE);
 
+        verifyStripeIsInjected();
+
         injectStripeJs();
     }
 

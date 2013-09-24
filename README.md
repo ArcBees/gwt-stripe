@@ -35,20 +35,14 @@ A simple [Stripe.js](https://stripe.com/docs/stripe.js) wrapper for GWT.
     ```
     
 ##Using it with StripeFactory
-1. Use `StripeFactory.get()` to get a `Stripe` instance:
+Use `StripeFactory.get()` to get a `Stripe` instance:
 
-    ```java
-    Stripe stripe = StripeFactory.get();
-    ```
+```java
+Stripe stripe = StripeFactory.get();
+```
     
-2. The `Stripe` instance is a singleton, so you can call `StripeFactory.get()` at any time:
+You can call `StripeFactory.get()` at any time, since the Stripe instance you'll receive is stateless.
 
-    ```java
-    Stripe stripe1 = StripeFactory.get();
-    Stripe stripe2 = StripeFactory.get();
-    
-    assert stripe1 == stripe2;
-    ```
 
 ##Running the sample
 1. Clone the repo
