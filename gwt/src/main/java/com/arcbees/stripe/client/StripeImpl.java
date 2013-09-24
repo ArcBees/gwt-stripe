@@ -29,10 +29,17 @@ public class StripeImpl implements Stripe {
 
     @Override
     public void getStripeToken(CreditCard creditCard, ResponseHandler responseHandler) {
-        getStripeToken(creditCard.getCreditCardNumber(), creditCard.getCvc(), creditCard.getExpirationMonth(),
-                creditCard.getExpirationYear(), creditCard.getName(), creditCard.getAddressLine1(),
-                creditCard.getAddressLine2(), creditCard.getAddressCity(), creditCard.getAddressState(),
-                creditCard.getAddressZip(), creditCard.getAddressCountry(),
+        getStripeToken(creditCard.getCreditCardNumber(),
+                creditCard.getCvc(),
+                creditCard.getExpirationMonth(),
+                creditCard.getExpirationYear(),
+                creditCard.getName(),
+                creditCard.getAddressLine1(),
+                creditCard.getAddressLine2(),
+                creditCard.getAddressCity(),
+                creditCard.getAddressState(),
+                creditCard.getAddressZip(),
+                creditCard.getAddressCountry(),
                 responseHandler);
     }
 
@@ -66,9 +73,17 @@ public class StripeImpl implements Stripe {
         $wnd.Stripe.setPublishableKey(publishableKey);
     }-*/;
 
-    private native void getStripeToken(String creditCardNumber, String cvc, int expiryMonth, int expiryYear,
-                                       String name, String addressLine1, String addressLine2, String addressCity,
-                                       String addressState, String addressZip, String addressCountry,
+    private native void getStripeToken(String creditCardNumber,
+                                       String cvc,
+                                       int expiryMonth,
+                                       int expiryYear,
+                                       String name,
+                                       String addressLine1,
+                                       String addressLine2,
+                                       String addressCity,
+                                       String addressState,
+                                       String addressZip,
+                                       String addressCountry,
                                        ResponseHandler responseHandler) /*-{
         var creditCardInfo = {
             number: creditCardNumber,
