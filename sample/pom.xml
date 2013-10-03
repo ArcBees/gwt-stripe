@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>com.arcbees.stripe</groupId>
-            <artifactId>gwt</artifactId>
+            <artifactId>gwt-stripe</artifactId>
             <version>${stripe.gwt.version}</version>
         </dependency>
     </dependencies>
