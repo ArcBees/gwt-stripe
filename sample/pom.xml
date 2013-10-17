@@ -5,16 +5,16 @@
     <parent>
         <artifactId>all</artifactId>
         <groupId>com.arcbees.stripe</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.1.0-alpha-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sample</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
         <gwt-maven-plugin.version>2.5.1</gwt-maven-plugin.version>
-        <stripe.gwt.version>1.0-SNAPSHOT</stripe.gwt.version>
+        <stripe.gwt.version>0.1.0-alpha-SNAPSHOT</stripe.gwt.version>
+        <maven-deploy-plugin.version>2.8</maven-deploy-plugin.version>
     </properties>
 
     <dependencies>
@@ -34,6 +34,15 @@
                 <configuration>
                     <runTarget>Sample.html</runTarget>
                     <copyWebapp>true</copyWebapp>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
+                <configuration>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>
