@@ -54,3 +54,4 @@ You can call `StripeFactory.get()` at any time, since the Stripe instance you'll
 ##Thanks to
 [![Arcbees.com](http://arcbees-ads.appspot.com/ad.png)](http://arcbees.com)
 
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/54c2ffbc1d29d1594bd73744ca3b1ec3 "githalytics.com")](http://githalytics.com/ArcBees/gwt-stripe)
