@@ -2,8 +2,8 @@ package com.arcbees.stripe.client.jso;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class Response extends JavaScriptObject {
-    protected Response() {
+public class CreditCardResponse extends JavaScriptObject {
+    protected CreditCardResponse() {
     }
 
     public final native String getId() /*-{
