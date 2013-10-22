@@ -9,10 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 public class SampleIT {
-    private final WebDriver webDriver = new ChromeDriver();
     private static final String ROOT = "http://localhost:8080/sample";
+
+    private final WebDriver webDriver = new ChromeDriver();
 
     @Test
     public void sampleTest() throws Throwable {
