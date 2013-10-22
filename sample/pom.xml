@@ -14,7 +14,11 @@
 
     <properties>
         <gwt-maven-plugin.version>2.5.1</gwt-maven-plugin.version>
-        <stripe.gwt.version>1.0-SNAPSHOT</stripe.gwt.version>
+        <stripe.gwt.version>0.2-alpha</stripe.gwt.version>
+        <junit.version>4.11</junit.version>
+        <selenium-java.version>2.33.0</selenium-java.version>
+        <maven-failsafe-plugin.version>2.12</maven-failsafe-plugin.version>
+        <tomcat-maven-plugin.version>1.1</tomcat-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -22,6 +26,18 @@
             <groupId>com.arcbees.stripe</groupId>
             <artifactId>gwt-stripe</artifactId>
             <version>${stripe.gwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -38,4 +54,58 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>integration-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${maven-failsafe-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>gwt-maven-plugin</artifactId>
+                        <version>${gwt-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <configuration>
+                                    <module>com.arcbees.stripe.IntegrationTests</module>
+                                </configuration>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>tomcat-maven-plugin</artifactId>
+                        <version>${tomcat-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <configuration>
+                                    <fork>true</fork>
+                                </configuration>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>run-war</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

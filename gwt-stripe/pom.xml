@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>gwt-stripe</artifactId>
+    <version>0.2-alpha</version>
     <packaging>jar</packaging>
 
     <properties>
