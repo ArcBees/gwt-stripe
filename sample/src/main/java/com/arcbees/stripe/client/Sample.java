@@ -4,15 +4,11 @@ import com.arcbees.stripe.client.jso.BankAccountResponse;
 import com.arcbees.stripe.client.jso.CreditCardResponse;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
 public class Sample implements EntryPoint {
     public void onModuleLoad() {
-        DOM.getElementById("loading").getStyle().setDisplay(Style.Display.NONE);
-
         verifyStripeIsInjected();
 
         injectStripeJs();

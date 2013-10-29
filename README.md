@@ -51,6 +51,11 @@ You can call `StripeFactory.get()` at any time, since the Stripe instance you'll
 4. `cd sample`
 5. `mvn clean gwt:run`
 
+##Running integration tests
+0. Make sure chromedriver is on your PATH
+1. `cd` to root folder
+2. `mvn clean verify -Pintegration-tests`
+
 ##Thanks to
 [![Arcbees.com](http://arcbees-ads.appspot.com/ad.png)](http://arcbees.com)
 
