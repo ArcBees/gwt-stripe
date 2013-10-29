@@ -25,8 +25,8 @@ public class StripeImpl implements Stripe {
     }
 
     @Override
-    public void getStripeToken(CreditCard creditCard, ResponseHandler responseHandler) {
-        getStripeToken(creditCard.getCreditCardNumber(),
+    public void getCreditCardToken(CreditCard creditCard, CreditCardResponseHandler creditCardResponseHandler) {
+        getCreditCardToken(creditCard.getCreditCardNumber(),
                 creditCard.getCvc(),
                 creditCard.getExpirationMonth(),
                 creditCard.getExpirationYear(),
@@ -37,6 +37,14 @@ public class StripeImpl implements Stripe {
                 creditCard.getAddressState(),
                 creditCard.getAddressZip(),
                 creditCard.getAddressCountry(),
+                creditCardResponseHandler);
+    }
+
+    @Override
+    public void getBankAccountToken(BankAccount bankAccount, BankAccountResponseHandler responseHandler) {
+        getBankAccountToken(bankAccount.getCountry(),
+                bankAccount.getRoutingNumber(),
+                bankAccount.getAccountNumber(),
                 responseHandler);
     }
 
@@ -56,6 +64,34 @@ public class StripeImpl implements Stripe {
     }-*/;
 
     @Override
+    public native boolean validateRoutingNumber(String routingNumber, String country) /*-{
+        return $wnd.Stripe.bankAccount.validateRoutingNumber(routingNumber, country);
+    }-*/;
+
+    @Override
+    public native boolean validateAccountNumber(String accountNumber, String country) /*-{
+        return $wnd.Stripe.bankAccount.validateAccountNumber(accountNumber, country);
+    }-*/;
+
+    @Override
+    public native void getCreditCard(String token, CreditCardResponseHandler handler) /*-{
+        var callback = function (status, response) {
+            handler.@com.arcbees.stripe.client.CreditCardResponseHandler::onCreditCardReceived(ILcom/arcbees/stripe/client/jso/CreditCardResponse;)(status, response);
+        }
+
+        return $wnd.Stripe.getToken(token, callback);
+    }-*/;
+
+    @Override
+    public native void getBankAccount(String token, BankAccountResponseHandler handler) /*-{
+        var callback = function (status, response) {
+            handler.@com.arcbees.stripe.client.BankAccountResponseHandler::onBankAccountReceived(ILcom/arcbees/stripe/client/jso/BankAccountResponse;)(status, response);
+        }
+
+        return $wnd.Stripe.getToken(token, callback);
+    }-*/;
+
+    @Override
     public native String getCardType(String cardNumber) /*-{
         return $wnd.Stripe.card.cardType(cardNumber);
     }-*/;
@@ -70,18 +106,18 @@ public class StripeImpl implements Stripe {
         $wnd.Stripe.setPublishableKey(publishableKey);
     }-*/;
 
-    private native void getStripeToken(String creditCardNumber,
-                                       String cvc,
-                                       int expiryMonth,
-                                       int expiryYear,
-                                       String name,
-                                       String addressLine1,
-                                       String addressLine2,
-                                       String addressCity,
-                                       String addressState,
-                                       String addressZip,
-                                       String addressCountry,
-                                       ResponseHandler responseHandler) /*-{
+    private native void getCreditCardToken(String creditCardNumber,
+                                           String cvc,
+                                           int expiryMonth,
+                                           int expiryYear,
+                                           String name,
+                                           String addressLine1,
+                                           String addressLine2,
+                                           String addressCity,
+                                           String addressState,
+                                           String addressZip,
+                                           String addressCountry,
+                                           CreditCardResponseHandler creditCardResponseHandler) /*-{
         var creditCardInfo = {
             number: creditCardNumber,
             cvc: cvc,
@@ -97,9 +133,26 @@ public class StripeImpl implements Stripe {
         };
 
         var createTokenCallback = function (status, response) {
-            responseHandler.@com.arcbees.stripe.client.ResponseHandler::onTokenReceived(ILcom/arcbees/stripe/client/jso/Response;)(status, response);
+            creditCardResponseHandler.@com.arcbees.stripe.client.CreditCardResponseHandler::onCreditCardReceived(ILcom/arcbees/stripe/client/jso/CreditCardResponse;)(status, response);
         }
 
         $wnd.Stripe.card.createToken(creditCardInfo, createTokenCallback);
+    }-*/;
+
+    private native void getBankAccountToken(String country,
+                                            String routingNumber,
+                                            String accountNumber,
+                                            BankAccountResponseHandler responseHandler) /*-{
+        var bankAccount = {
+            country: country,
+            routingNumber: routingNumber,
+            accountNumber: accountNumber
+        };
+
+        var createTokenCallback = function (status, response) {
+            responseHandler.@com.arcbees.stripe.client.BankAccountResponseHandler::onBankAccountReceived(ILcom/arcbees/stripe/client/jso/BankAccountResponse;)(status, response);
+        }
+
+        $wnd.Stripe.bankAccount.createToken(bankAccount, createTokenCallback);
     }-*/;
 }

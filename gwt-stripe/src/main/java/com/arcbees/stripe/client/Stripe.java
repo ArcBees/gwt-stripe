@@ -9,7 +9,9 @@ public interface Stripe {
 
     void setPublishableKey(String publishableToken);
 
-    void getStripeToken(CreditCard creditCard, ResponseHandler responseHandler);
+    void getCreditCardToken(CreditCard creditCard, CreditCardResponseHandler creditCardResponseHandler);
+
+    void getBankAccountToken(BankAccount bankAccount, BankAccountResponseHandler responseHandler);
 
     boolean validateCardNumber(String cardNumber);
 
@@ -18,4 +20,12 @@ public interface Stripe {
     boolean validateCardCvc(String cvc);
 
     String getCardType(String cardNUmber);
+
+    boolean validateRoutingNumber(String routingNumber, String country);
+
+    boolean validateAccountNumber(String accountNumber, String country);
+
+    void getCreditCard(String token, CreditCardResponseHandler creditCardResponseHandler);
+
+    void getBankAccount(String token, BankAccountResponseHandler bankAccountResponseHandler);
 }

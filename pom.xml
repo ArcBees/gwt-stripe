@@ -7,7 +7,7 @@
     <groupId>com.arcbees.stripe</groupId>
     <artifactId>all</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.2-alpha</version>
     <modules>
         <module>sample</module>
         <module>gwt-stripe</module>
