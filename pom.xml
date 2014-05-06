@@ -21,8 +21,8 @@
     </modules>
 
     <scm>
-        <connection>scm:git:git@github.com:ArcBees/gwt-stripe.git</connection>
-        <url>git@github.com/ArcBees/gwt-stripe.git</url>
+        <connection>scm:git:git://github.com/ArcBees/gwt-stripe.git</connection>
+        <url>https://github.com/ArcBees/gwt-stripe.git</url>
     </scm>
 
     <properties>
