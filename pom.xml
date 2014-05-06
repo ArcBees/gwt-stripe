@@ -22,7 +22,8 @@
 
     <scm>
         <connection>scm:git:git://github.com/ArcBees/gwt-stripe.git</connection>
-        <url>https://github.com/ArcBees/gwt-stripe.git</url>
+        <developerConnection>scm:git:git@github.com:ArcBees/gwt-stripe.git</developerConnection>
+        <url>https://github.com/ArcBees/gwt-stripe</url>
     </scm>
 
     <properties>
