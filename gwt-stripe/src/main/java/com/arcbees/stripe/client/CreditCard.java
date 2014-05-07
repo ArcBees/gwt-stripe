@@ -70,13 +70,22 @@ public class CreditCard {
         }
 
         public CreditCard build() {
-            return new CreditCard(creditCardNumber, cvc, expirationMonth, expirationYear, name, addressLine1,
-                    addressLine2, addressCity, addressState, addressZip, addressCountry);
+            return new CreditCard(this);
         }
     }
 
-    public static Builder with() {
-        return new Builder();
+    private CreditCard(Builder builder) {
+        this.creditCardNumber = builder.creditCardNumber;
+        this.cvc = builder.cvc;
+        this.expirationMonth = builder.expirationMonth;
+        this.expirationYear = builder.expirationYear;
+        this.name = builder.name;
+        this.addressLine1 = builder.addressLine1;
+        this.addressLine2 = builder.addressLine2;
+        this.addressCity = builder.addressCity;
+        this.addressState = builder.addressState;
+        this.addressZip = builder.addressZip;
+        this.addressCountry = builder.addressCountry;
     }
 
     private final String creditCardNumber;
@@ -90,30 +99,6 @@ public class CreditCard {
     private final String addressState;
     private final String addressZip;
     private final String addressCountry;
-
-    private CreditCard(String creditCardNumber,
-                       String cvc,
-                       Integer expirationMonth,
-                       Integer expirationYear,
-                       String name,
-                       String addressLine1,
-                       String addressLine2,
-                       String addressCity,
-                       String addressState,
-                       String addressZip,
-                       String addressCountry) {
-        this.creditCardNumber = creditCardNumber;
-        this.cvc = cvc;
-        this.expirationMonth = expirationMonth;
-        this.expirationYear = expirationYear;
-        this.name = name;
-        this.addressLine1 = addressLine1;
-        this.addressLine2 = addressLine2;
-        this.addressCity = addressCity;
-        this.addressState = addressState;
-        this.addressZip = addressZip;
-        this.addressCountry = addressCountry;
-    }
 
     public String getAddressCity() {
         return addressCity;

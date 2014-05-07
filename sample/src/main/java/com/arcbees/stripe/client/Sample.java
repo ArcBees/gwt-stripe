@@ -21,9 +21,18 @@ public class Sample implements EntryPoint {
 
         StripeFactory.get().setPublishableKey("pk_test_LFrI356QTfcLFnYOIwbXaGgT");
 
-        CreditCard creditCard = CreditCard.with().creditCardNumber("4242424242424242").cvc("550").expirationMonth(9)
-                .expirationYear(2014).name("John Smith").addressLine1("1093 Charleston rd").addressLine2("apt. 3")
-                .addressCity("Los Angeles").addressCountry("United States").addressState("CA").addressZip("91257")
+        CreditCard creditCard = new CreditCard.Builder()
+                .creditCardNumber("4242424242424242")
+                .cvc("550")
+                .expirationMonth(9)
+                .expirationYear(2014)
+                .name("John Smith")
+                .addressLine1("1093 Charleston rd")
+                .addressLine2("apt. 3")
+                .addressCity("Los Angeles")
+                .addressCountry("United States")
+                .addressState("CA")
+                .addressZip("91257")
                 .build();
 
         StripeFactory.get().getCreditCardToken(creditCard, new CreditCardResponseHandler() {
