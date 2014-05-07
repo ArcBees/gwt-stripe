@@ -74,6 +74,18 @@ public class CreditCard {
         }
     }
 
+    private final String creditCardNumber;
+    private final String cvc;
+    private final Integer expirationMonth;
+    private final Integer expirationYear;
+    private final String name;
+    private final String addressLine1;
+    private final String addressLine2;
+    private final String addressCity;
+    private final String addressState;
+    private final String addressZip;
+    private final String addressCountry;
+
     private CreditCard(Builder builder) {
         this.creditCardNumber = builder.creditCardNumber;
         this.cvc = builder.cvc;
@@ -87,18 +99,6 @@ public class CreditCard {
         this.addressZip = builder.addressZip;
         this.addressCountry = builder.addressCountry;
     }
-
-    private final String creditCardNumber;
-    private final String cvc;
-    private final Integer expirationMonth;
-    private final Integer expirationYear;
-    private final String name;
-    private final String addressLine1;
-    private final String addressLine2;
-    private final String addressCity;
-    private final String addressState;
-    private final String addressZip;
-    private final String addressCountry;
 
     public String getAddressCity() {
         return addressCity;
