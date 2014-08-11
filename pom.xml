@@ -14,7 +14,6 @@
     <version>0.2.1-SNAPSHOT</version>
 
     <modules>
-        <module>sample</module>
         <module>gwt-stripe</module>
     </modules>
 
@@ -27,5 +26,35 @@
     <properties>
         <gwt.version>2.6.0</gwt.version>
         <gin.version>2.1.2</gin.version>
+        <junit.version>4.11</junit.version>
+
+        <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-user</artifactId>
+                <version>${gwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.gwt.inject</groupId>
+                <artifactId>gin</artifactId>
+                <version>${gin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-dev</artifactId>
+                <version>${gwt.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
