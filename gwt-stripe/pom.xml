@@ -13,12 +13,18 @@
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
-            <version>${gwt.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.gwt.inject</groupId>
             <artifactId>gin</artifactId>
-            <version>${gin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
         </dependency>
     </dependencies>
 
@@ -38,6 +44,23 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <additionalClasspathElements>
+                        <additionalClasspathElement>${project.build.sourceDirectory}</additionalClasspathElement>
+                        <additionalClasspathElement>${project.build.testSourceDirectory}</additionalClasspathElement>
+                    </additionalClasspathElements>
+                    <useManifestOnlyJar>false</useManifestOnlyJar>
+                    <systemProperties>
+                        <property>
+                            <name>gwt.args</name>
+                            <value>-war ${basedir}/src/test/war</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
             </plugin>
         </plugins>
     </build>
